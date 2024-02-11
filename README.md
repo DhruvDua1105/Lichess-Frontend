@@ -1,6 +1,10 @@
-# Getting Started with Create React App
+# Lichess Frontend React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+## Connection with FastAPI backend
+
+Make sure that the backend is serving on port http://127.0.0.1:8000/
 
 ## Available Scripts
 
