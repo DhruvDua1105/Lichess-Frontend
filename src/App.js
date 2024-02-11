@@ -1,25 +1,28 @@
-import logo from './logo.svg';
+import React, { useState } from 'react';
+import Login from './components/Login';
+import Signup from './components/Signup';
+import ChessPlayerData from './components/ChessPlayerData';
 import './App.css';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	const [isSignedUp, setIsSignedUp] = useState(true);
+
+	const handleSignupSuccess = () => {
+		setIsSignedUp(false);
+	};
+	const handleLoginSuccess = () => {
+		setIsSignedUp(true);
+	};
+
+
+	return (
+		<div className="App sidebar-background">
+			<div className="App-header min-h-screen">
+				{localStorage.getItem("token") ? <ChessPlayerData /> :
+					(isSignedUp ? <Login onSignupSuccess={handleSignupSuccess} /> : <Signup onSignupSuccess={handleLoginSuccess} />)}
+			</div>
+		</div>
+	);
 }
 
 export default App;
